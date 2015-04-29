@@ -5,53 +5,62 @@
 
 import java.util.Scanner; //import scanner
 
-//write program to determine if there are enough cookeis for people to get desired number
-//check to make sure all inputs are valid
-//add class
-public class Cookies{
-    			// main method required for every Java program
-   			public static void main(String[] args) {
-   			    Scanner myScanner; 
-   			    int nPeople=0; //initialize variable nPeople
-   			    int nCookies=0; //intialize variable nCookies
-   			    myScanner = new Scanner ( System.in ); //declare instance of scanner object
-   			    System.out.print("Enter the number of people attending event: "); //prompt user to enter number of guests
-   			    if(myScanner.hasNextInt()){
-   			        nPeople= myScanner.nextInt(); //declare scanner input as nPeople
-   			     }
-   			     else{
-   			         System.out.println("You did not enter an integer"); //tell user input is invalid
-   			         return; //leaves the program and terminate it
-   			         }
-   			    if(nPeople > 0){
-   			        System.out.print("Enter the number of cookies you are planning to buy: ")
-   			    }
-   			    else{
-   			        System.out.println("You did not enter an integer greater than 0"); //tell t
-   			        return;//leave the program and terminate it
-   			        }
-   			    if(myScanner.hasNextInt()){
-   			        nCookies = myScanner.nextInt(); //declare scanner input as nCookies
-   			    }
-   			    else{
-   			        System.out.println("You did not enter an integer greater than 0"); //tell user input is invalid
-   			    }
-   			    if(nCookies>0){
-   			        System.out.print("How many do you want each person to get?"); //prompt user to enter number for each person
-   			    }
-   			    else{
-   			        System.out.println("You did not enter an integer greater than 0"); //tell user input is invalid
-   			    
-   			        
-  
-   			    
-   			    
-   			     
+public class Cookies {
 
-   			    
-   			    
-   			    
+//  define main method
+    public static void main (String [] args) {
 
-}  //end of main method   
-  	} //end of class
+//  declare
+    Scanner myScanner;
+    
+//  construct
+    myScanner=new Scanner (System.in);
+    
+    // enter the number of people
+    
+    System.out.println("Enter the number of people: ");
+    if(!myScanner.hasNextInt()) {
+        System.out.println("You did not enter an int!");
+        return;     // leaves the program, program terminates
+    }
+    int nPeople = myScanner.nextInt();
+    
+    if (nPeople <= 0) {
+        System.out.println("You did not enter an integer greater than 0!");
+        return;
+    }
+    
+    // enter the number of cookies
+    
+    System.out.println("Enter the number of cookies you are planning to buy: ");
+    int nCookies = myScanner.nextInt();
+    
+    // enter how many per person
+    
+    System.out.println("How many do you want each person to get: ");
+    int cookiePerPerson = myScanner.nextInt();
+    
+    int minCookies = nPeople * cookiePerPerson;
+    
+    // what will happen if not enough cookies
+    
+    if (minCookies > nCookies) {
+        System.out.println("You will not have enough cookies. You need to buy at least " + (minCookies - nCookies) + " more.");
+        return;
+    }
+
+    // what will happen if they aren't divdied evenly
+    
+    if (nCookies % nPeople != 0) {
+        System.out.println("You have enough, but they will not divide evenly.");
+        return;
+    }
+    
+    // what will happen if all is good
+    
+    System.out.println("You have enough cookies for each person and the amount will divide evenly.");
+    
+       
+    }   // end main method
+}   // end class
 

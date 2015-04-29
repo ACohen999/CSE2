@@ -1,66 +1,58 @@
 //Aaron Cohen
-//Lab07
+//Lab08
 //CSE2
 
 import java.util.Scanner;
 
-public class zigzag{
-    public static void main( String[]args ){
+public class Factorials {
+    public static void main(String[] args){
         
-        //defines Scanner
-        Scanner myScanner;
-        myScanner = new Scanner( System.in );
+        int number=0;
         
-        //defines variables
-        String star="*";
-        int nStars=-1;
-        String goAgain="y";
-        
-        while(goAgain.equals("y") || goAgain.equals("Y")){
+        while(number<=0){
+             Scanner scan = new Scanner (System.in);
+             System.out.print("Please enter a positive integer :");
+             while (!scan.hasNextInt()){
+                 System.out.print("Please enter a positive integer :");
+                 scan=new Scanner(System.in);
+             }
             
-            //loop runs at least once because int nStars is initialized to -1, loop runs while nStars is out of [3,33] range
-            while(nStars>33 || nStars<3){
-                //prompts user to enter a value for the number of stars he wants
-                System.out.print("Enter an int between 3 and 33: ");
-                
-                //if the entry is not an integer, this loop will run
-                while(!myScanner.hasNextInt()){
-                    System.out.println("That is not an int.");
-                    System.out.print("Enter an int between 3 and 33: ");
-                    myScanner.next();
-                }
-                ///if the loop is an int, the entry equals nStars
-                if(myScanner.hasNextInt()){
-                    nStars=myScanner.nextInt();
-                }
-            }
-            
-            //prints top line of stars
-            for(int i=0; i<nStars; i++){
-                System.out.print(star);
-            }  
-            System.out.println();
-            
-            //prints diagonal of stars
-            for(int j=0; j<nStars; j++){
-                System.out.println(star);
-                star=" "+star;
-            }
-            
-            //prints bottom line of stars
-            for(int k=0; k<nStars; k++){
-                star="*";
-                System.out.print(star);
-            }  
-            System.out.println();        
-        
-        //prompts user to go again, if user enters anything but y or Y the infinite while loop will break
-        System.out.print("Enter y or Y to go again: ");
-        goAgain=myScanner.next();
-        //Re-initalizes nStars so that the nested loops will run
-        nStars=-1;
-        
+            number=(int) scan.nextInt();
         }
         
+        int initial=number;
+        int superFactorial=0;
+        
+        for(;number>0;number--){
+            superFactorial += factorial(number);
+        }
+        
+        
+        print(initial,superFactorial);
+        
+       
+        
+        
+       
+        
     }
+
+
+public static int factorial (int input){
+    int result=1;
+    
+    
+    for(;input>0;input--){
+        
+        result *=input;
+    }
+    
+    return result;
+}
+
+public static void print(int base, int output) {
+    System.out.println("\"The super factorial of "+base+" is "+output+"\"");
+
+}
+
 }
